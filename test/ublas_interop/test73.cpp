@@ -20,7 +20,7 @@
 template <class M, int N>
 struct test_my_matrix
 {
-   typedef typename M::value_type value_type;
+   using value_type = typename M::value_type;
 
    template <class MP>
    void test_with(MP& m1, MP& m2, MP& m3) const

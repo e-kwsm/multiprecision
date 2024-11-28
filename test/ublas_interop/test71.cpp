@@ -23,9 +23,9 @@
 template <class V, int N>
 struct test_my_vector
 {
-   typedef typename V::value_type                             value_type;
-   typedef typename V::size_type                              size_type;
-   typedef typename ublas::type_traits<value_type>::real_type real_type;
+   using value_type = typename V::value_type;
+   using size_type  = typename V::size_type;
+   using real_type  = typename ublas::type_traits<value_type>::real_type;
 
    template <class VP>
    void test_with(VP& v1, VP& v2, VP& v3) const
