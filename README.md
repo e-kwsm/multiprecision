@@ -57,7 +57,7 @@ floating-point backend type `cpp_bin_float` to compute ${\sim}100$ decimal digit
 
 $$\sqrt{\pi} = \Gamma \left( \frac{1}{2} \right)~{\approx}~1.772453850905516027298{\ldots}\text{,}$$
 
-where we also observe that Multiprecision can seamlesly interoperate with
+where we also observe that Multiprecision can seamlessly interoperate with
 [`Boost.Math`](https://github.com/boostorg/math).
 
 ```cpp
@@ -124,7 +124,7 @@ So no other downloads are required.
 
 Some functionality is reduced in this mode.
 A `static_assert` message will alert you if a particular feature has been disabled by standalone mode.
-[`Boost.Math`](https://github.com/boostorg/math) standalone mode is compatiable,
+[`Boost.Math`](https://github.com/boostorg/math) standalone mode is compatible,
 and recommended if special functions are required for the floating point types.
 
 ## Support, bugs and feature requests
