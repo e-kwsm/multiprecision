@@ -99,9 +99,9 @@ using uint128_type = unsigned __int128;
 #if defined(BOOST_HAS_FLOAT128) && defined(__cplusplus)
 namespace boost { namespace multiprecision {
 #  ifdef __GNUC__
-   __extension__ typedef __float128 float128_type;
+   __extension__ using float128_type = __float128;
 #  else
-   typedef __float128 float128_type;
+   using float128_type = __float128;
 #  endif
 }}
 
