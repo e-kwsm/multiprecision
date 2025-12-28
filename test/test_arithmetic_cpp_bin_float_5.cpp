@@ -9,12 +9,12 @@
 
 using namespace boost::multiprecision;
 
-typedef number<cpp_bin_float<500>, et_off> cpp_bin_float_500_et_s;
+using cpp_bin_float_500_et_s = number<cpp_bin_float<500>, et_off>;
 
 template <>
 struct related_type<cpp_bin_float_500_et_s>
 {
-   typedef number<cpp_bin_float<500, digit_base_10, std::allocator<char> >, et_off> type;
+   using type = number<cpp_bin_float<500, digit_base_10, std::allocator<char> >, et_off>;
 };
 
 int main()

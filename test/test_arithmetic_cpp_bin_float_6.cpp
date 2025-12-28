@@ -19,9 +19,9 @@ struct related_type<boost::multiprecision::number<boost::multiprecision::cpp_bin
 int main()
 {
    using namespace boost::multiprecision;
-   typedef number<backends::cpp_bin_float<11, backends::digit_base_2, void, std::int16_t, -14, 15>, et_off> float16_t;
-   typedef number<backends::cpp_bin_float<8, backends::digit_base_2, void, std::int16_t, -126, 127>, et_off> bfloat16_t;
-   
+   using float16_t  = number<backends::cpp_bin_float<11, backends::digit_base_2, void, std::int16_t, -14, 15>, et_off>;
+   using bfloat16_t = number<backends::cpp_bin_float<8, backends::digit_base_2, void, std::int16_t, -126, 127>, et_off>;
+
    test<float16_t>();
    test<bfloat16_t>();
    return boost::report_errors();
