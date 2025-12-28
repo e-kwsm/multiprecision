@@ -65,7 +65,6 @@ project : requirements
    <toolset>clang-win:<link>static  # Clang-win does not generate .dlls.
    <toolset>clang:<link>static # Clang-linux does not generate .dlls.
    <toolset>clang:<cxxflags>-Wno-unused-variable  # warning: unused variable 'tolerance' [-Wunused-variable]
-   <toolset>clang:<cxxflags>-v
 
    # Assembler error "File too big" caused by lots of C++ templates, for example, math/floating_point_examples.cpp.
    # Some projects on some toolsets may require
