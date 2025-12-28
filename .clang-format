@@ -3,7 +3,6 @@ Language: Cpp
 
 UseTab: Never
 IndentWidth: 3
-BreakBeforeBraces: Allman
 IndentCaseLabels: false
 ColumnLimit: 0
 AlignConsecutiveAssignments: true
@@ -19,7 +18,6 @@ BreakBeforeBraces: Custom
 BraceWrapping:
   AfterEnum: true
   AfterStruct: true
-  SplitEmptyFunction: false
   AfterClass: true
   AfterControlStatement: true
   AfterFunction: true
