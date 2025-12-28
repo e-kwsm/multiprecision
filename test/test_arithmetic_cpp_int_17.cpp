@@ -14,12 +14,12 @@ struct is_twos_complement_integer<boost::multiprecision::number<boost::multiprec
 template <>
 struct related_type<boost::multiprecision::cpp_int>
 {
-   typedef boost::multiprecision::int256_t type;
+   using type = boost::multiprecision::int256_t;
 };
 template <std::size_t MinBits, std::size_t MaxBits, boost::multiprecision::cpp_integer_type SignType, boost::multiprecision::cpp_int_check_type Checked, class Allocator, boost::multiprecision::expression_template_option ET>
 struct related_type<boost::multiprecision::number<boost::multiprecision::cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ET> >
 {
-   typedef boost::multiprecision::number<boost::multiprecision::cpp_int_backend<MinBits / 2, MaxBits / 2, SignType, Checked, Allocator>, ET> type;
+   using type = boost::multiprecision::number<boost::multiprecision::cpp_int_backend<MinBits / 2, MaxBits / 2, SignType, Checked, Allocator>, ET>;
 };
 
 template <>
