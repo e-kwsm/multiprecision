@@ -19,8 +19,8 @@
 template <int N>
 static bool round_test_imp()
 {
-   typedef boost::multiprecision::cpp_dec_float<N>                                       mp_backend_type;
-   typedef boost::multiprecision::number<mp_backend_type, boost::multiprecision::et_off> mp_type;
+   using mp_backend_type = boost::multiprecision::cpp_dec_float<N>;
+   using mp_type         = boost::multiprecision::number<mp_backend_type, boost::multiprecision::et_off>;
 
    const mp_type original_digits(1.0F);
 
