@@ -211,11 +211,11 @@ void test_specific(const T&)
 template <class Number>
 void test()
 {
-   typedef typename std::conditional<
+   using fp_test_type = typename std::conditional<
        std::numeric_limits<Number>::is_specialized,
        typename boost::multiprecision::number_category<Number>::type,
        std::integral_constant<int, 500> // not a number type
-       >::type fp_test_type;
+       >::type;
 
    test_specific<Number>(fp_test_type());
 

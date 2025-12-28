@@ -28,12 +28,12 @@
 template <class T>
 struct extract_value_type
 {
-   typedef typename T::value_type type;
+   using type = typename T::value_type;
 };
 template <>
 struct extract_value_type<double>
 {
-   typedef double type;
+   using type = double;
 };
 
 template <class T>
