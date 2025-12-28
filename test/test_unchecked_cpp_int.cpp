@@ -20,7 +20,7 @@ template <class T>
 T generate_random(unsigned bits_wanted)
 {
    static boost::random::mt19937               gen;
-   typedef boost::random::mt19937::result_type random_type;
+   using random_type = boost::random::mt19937::result_type;
 
    T        max_val;
    unsigned digits;
@@ -55,7 +55,7 @@ template <class Number>
 void test()
 {
    using namespace boost::multiprecision;
-   typedef Number test_type;
+   using test_type = Number;
 
    for (unsigned i = 30; i < std::numeric_limits<test_type>::digits; ++i)
    {

@@ -52,7 +52,7 @@ T generate_random()
    // At the end we ditch the current exponent, and replace with our own
    // randomly generated one.
    //
-   typedef int                   e_type;
+   using e_type = int;
    static boost::random::mt19937 gen;
    T                             val      = gen();
    T                             prev_val = -1;

@@ -169,7 +169,7 @@ inline bool is_mpfr(const boost::multiprecision::number<boost::multiprecision::m
 template <class T>
 void test()
 {
-   typedef typename T::backend_type backend_type;
+   using backend_type = typename T::backend_type;
    T                                num, expect;
    num.backend() = boost::multiprecision::default_ops::get_constant_pi<backend_type>();
    expect        = static_cast<T>(pi);

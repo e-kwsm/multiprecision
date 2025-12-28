@@ -26,7 +26,7 @@ template <class T>
 T generate_random(unsigned bits_wanted)
 {
    static boost::random::mt19937               gen;
-   typedef boost::random::mt19937::result_type random_type;
+   using random_type = boost::random::mt19937::result_type;
 
    T        max_val;
    unsigned digits;

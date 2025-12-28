@@ -77,7 +77,7 @@ bool is_bankers_rounding_error(const std::string& s, const std::string& expect)
 template <class Clock>
 struct stopwatch
 {
-   typedef typename Clock::duration duration;
+   using duration = typename Clock::duration;
    stopwatch()
    {
       m_start = Clock::now();
@@ -98,19 +98,19 @@ struct stopwatch
 template <class T>
 struct exponent_type
 {
-   typedef int type;
+   using type = int;
 };
 template <class T, boost::multiprecision::expression_template_option ET>
 struct exponent_type<boost::multiprecision::number<T, ET> >
 {
-   typedef typename T::exponent_type type;
+   using type = typename T::exponent_type;
 };
 
 template <class T>
 T generate_random_float()
 {
    BOOST_MATH_STD_USING
-   typedef typename exponent_type<T>::type e_type;
+   using e_type = typename exponent_type<T>::type;
    static boost::random::mt19937           gen;
    T                                       val      = gen();
    T                                       prev_val = -1;

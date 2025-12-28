@@ -26,7 +26,7 @@
 template <class Clock>
 struct stopwatch
 {
-   typedef typename Clock::duration duration;
+   using duration = typename Clock::duration;
    stopwatch()
    {
       m_start = Clock::now();
@@ -63,7 +63,7 @@ void print_flags(std::ios_base::fmtflags f)
 template <class T>
 void test()
 {
-   typedef T                                mp_t;
+   using mp_t = T;
    std::array<std::ios_base::fmtflags, 9> f =
        {{std::ios_base::fmtflags(0), std::ios_base::showpoint, std::ios_base::showpos, std::ios_base::scientific, std::ios_base::scientific | std::ios_base::showpos,
          std::ios_base::scientific | std::ios_base::showpoint, std::ios_base::fixed, std::ios_base::fixed | std::ios_base::showpoint,
@@ -174,7 +174,7 @@ void test()
 template <class T>
 T generate_random()
 {
-   typedef typename T::backend_type::exponent_type e_type;
+   using e_type = typename T::backend_type::exponent_type;
    static boost::random::mt19937                   gen;
    T                                               val      = gen();
    T                                               prev_val = -1;

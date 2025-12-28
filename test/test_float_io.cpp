@@ -128,7 +128,7 @@ void print_flags(std::ios_base::fmtflags f)
 template <class T>
 void test()
 {
-   typedef T mp_t;
+   using mp_t = T;
 
    std::cout << "Testing type of test: " << typeid(mp_t).name() << std::endl;
 
@@ -249,7 +249,7 @@ void test()
 template <class T>
 T generate_random()
 {
-   typedef typename T::backend_type::exponent_type e_type;
+   using e_type = typename T::backend_type::exponent_type;
    static boost::random::mt19937                   gen;
    T                                               val      = gen();
    T                                               prev_val = -1;

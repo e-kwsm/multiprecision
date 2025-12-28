@@ -39,7 +39,7 @@ template <class T>
 T generate_random_int(unsigned bits_wanted)
 {
    static boost::random::mt19937               gen;
-   typedef boost::random::mt19937::result_type random_type;
+   using random_type = boost::random::mt19937::result_type;
 
    T        max_val;
    unsigned digits;
@@ -73,7 +73,7 @@ T generate_random_int(unsigned bits_wanted)
 template <class T>
 T generate_random(unsigned bits_wanted)
 {
-   typedef typename component_type<T>::type int_type;
+   using int_type = typename component_type<T>::type;
    T                                        val(generate_random_int<int_type>(bits_wanted), generate_random_int<int_type>(bits_wanted));
    return val;
 }

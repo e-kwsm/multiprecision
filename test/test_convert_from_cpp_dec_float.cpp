@@ -39,7 +39,7 @@ using namespace boost::multiprecision;
 template <class T>
 T generate_random()
 {
-   typedef int                   e_type;
+   using e_type = int;
    static boost::random::mt19937 gen;
    T                             val      = gen();
    T                             prev_val = -1;
