@@ -30,11 +30,11 @@ constexpr int expected_2()
 
 int main()
 {
-   typedef boost::multiprecision::number<boost::multiprecision::backends::arithmetic_backend<long long>, boost::multiprecision::et_off>          int_backend;
-   typedef boost::multiprecision::number<boost::multiprecision::backends::arithmetic_backend<unsigned long long>, boost::multiprecision::et_off> unsigned_backend;
+   using int_backend      = boost::multiprecision::number<boost::multiprecision::backends::arithmetic_backend<long long>, boost::multiprecision::et_off>;
+   using unsigned_backend = boost::multiprecision::number<boost::multiprecision::backends::arithmetic_backend<unsigned long long>, boost::multiprecision::et_off>;
 
-   typedef boost::multiprecision::number<boost::multiprecision::backends::arithmetic_backend<long long>, boost::multiprecision::et_on>          int_backend_et;
-   typedef boost::multiprecision::number<boost::multiprecision::backends::arithmetic_backend<unsigned long long>, boost::multiprecision::et_on> unsigned_backend_et;
+   using int_backend_et      = boost::multiprecision::number<boost::multiprecision::backends::arithmetic_backend<long long>, boost::multiprecision::et_on>;
+   using unsigned_backend_et = boost::multiprecision::number<boost::multiprecision::backends::arithmetic_backend<unsigned long long>, boost::multiprecision::et_on>;
 
    {
       constexpr int_backend a(22);

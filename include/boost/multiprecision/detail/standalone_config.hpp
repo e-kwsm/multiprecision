@@ -86,11 +86,11 @@ namespace boost { namespace multiprecision {
 #if defined(BOOST_HAS_INT128) && defined(__cplusplus)
 namespace boost { namespace multiprecision {
 #  ifdef __GNUC__
-   __extension__ typedef __int128 int128_type;
-   __extension__ typedef unsigned __int128 uint128_type;
+__extension__ using int128_type  = __int128;
+__extension__ using uint128_type = unsigned __int128;
 #  else
-   typedef __int128 int128_type;
-   typedef unsigned __int128 uint128_type;
+using int128_type  = __int128;
+using uint128_type = unsigned __int128;
 #  endif
 }}
 

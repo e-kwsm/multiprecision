@@ -153,8 +153,8 @@ void test_extra(T)
    t = fmod(dval, t);
    t = fmod(dval, t * t);
 
-   typedef typename T::backend_type             backend_type;
-   typedef typename backend_type::exponent_type exp_type;
+   using backend_type                             = typename T::backend_type;
+   using exp_type                                 = typename backend_type::exponent_type;
    exp_type                                     e = 0;
    int                                          i = 0;
 
@@ -246,7 +246,7 @@ int main()
    BOOST_CONCEPT_ASSERT((boost::math::concepts::RealTypeConcept<boost::multiprecision::cpp_bin_float_50>));
 #endif
 #ifdef TEST_LOGGED_ADAPTER
-   typedef boost::multiprecision::number<boost::multiprecision::logged_adaptor<boost::multiprecision::cpp_dec_float<50> > > num_t;
+   using num_t = boost::multiprecision::number<boost::multiprecision::logged_adaptor<boost::multiprecision::cpp_dec_float<50> > >;
    test_extra(num_t());
 #endif
 }

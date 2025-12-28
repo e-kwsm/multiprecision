@@ -17,7 +17,7 @@
 template <class Clock>
 struct stopwatch
 {
-   typedef typename Clock::duration duration;
+   using duration = typename Clock::duration;
    stopwatch()
    {
       m_start = Clock::now();
@@ -175,8 +175,8 @@ inline bool delaunay_test(int32_t ax, int32_t ay, int32_t bx, int32_t by,
    // NOTE: This routine is limited to inputs with up to 30 BIT PRECISION, which
    // is to say all inputs must be in the range [INT_MIN/2, INT_MAX/2].
 
-   typedef typename Traits::i64_t  i64;
-   typedef typename Traits::i128_t i128;
+   using i64  = typename Traits::i64_t;
+   using i128 = typename Traits::i128_t;
 
    i64 cos_abc, t;
    mul_2n(cos_abc, (ax - bx), (cx - bx)); // subtraction yields 31-bit values, multiplied to give 62-bit values
@@ -216,7 +216,7 @@ struct dt_dat
    int32_t ax, ay, bx, by, cx, cy, dx, dy;
 };
 
-typedef std::vector<dt_dat> data_t;
+using data_t = std::vector<dt_dat>;
 data_t                      data;
 
 template <class Traits>
@@ -252,8 +252,8 @@ void do_calc(const char* name)
 template <class I64, class I128>
 struct test_traits
 {
-   typedef I64  i64_t;
-   typedef I128 i128_t;
+   using i64_t  = I64;
+   using i128_t = I128;
 };
 
 dt_dat generate_quadrilateral()

@@ -7,8 +7,8 @@
 
 int main()
 {
-   typedef boost::multiprecision::number<boost::multiprecision::backends::cpp_bin_float<256> >  ext_float_t;
-   typedef boost::multiprecision::number<boost::multiprecision::backends::cpp_bin_float<2046> > long_ext_float_t;
+   using ext_float_t      = boost::multiprecision::number<boost::multiprecision::backends::cpp_bin_float<256> >;
+   using long_ext_float_t = boost::multiprecision::number<boost::multiprecision::backends::cpp_bin_float<2046> >;
 
    ext_float_t x = 5e15;
    x += 0.5;

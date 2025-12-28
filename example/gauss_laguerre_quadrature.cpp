@@ -466,9 +466,8 @@ struct local
 {
   static constexpr unsigned int my_digits10 = 101U;
 
-  typedef boost::multiprecision::number<boost::multiprecision::cpp_dec_float<my_digits10>,
-                                        boost::multiprecision::et_off>
-  float_type;
+  using float_type = boost::multiprecision::number<boost::multiprecision::cpp_dec_float<my_digits10>,
+                                                   boost::multiprecision::et_off>;
 };
 
 static_assert(local::my_digits10 > 20U,
@@ -506,7 +505,7 @@ int main()
   std::cout << "std::numeric_limits<local::float_type>::digits10: " << std::numeric_limits<local::float_type>::digits10 << std::endl;
   std::cout << "laguerre_order: " << laguerre_order << std::endl;
 
-  typedef gauss::laguerre::detail::abscissas_and_weights<local::float_type> abscissas_and_weights_type;
+  using abscissas_and_weights_type = gauss::laguerre::detail::abscissas_and_weights<local::float_type>;
 
   const abscissas_and_weights_type the_abscissas_and_weights(laguerre_order, local::float_type(-1) / 6);
 
@@ -516,7 +515,7 @@ int main()
   {
     const local::float_type x = local::float_type(u) / 7;
 
-    typedef gauss::laguerre::detail::airy_ai_object<local::float_type> airy_ai_object_type;
+    using airy_ai_object_type = gauss::laguerre::detail::airy_ai_object<local::float_type>;
 
     const airy_ai_object_type the_airy_ai_object(x);
 

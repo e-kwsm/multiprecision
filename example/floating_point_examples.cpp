@@ -360,7 +360,7 @@ The following code evaluates `sin(x)` as a polynomial, accurate to at least 64 d
 */
 
 using boost::multiprecision::cpp_dec_float;
-typedef boost::multiprecision::number<cpp_dec_float<64> > mp_type;
+using mp_type = boost::multiprecision::number<cpp_dec_float<64> >;
 
 mp_type mysin(const mp_type& x)
 {
@@ -619,7 +619,7 @@ int main(int, char**)
 /*=int main(int, char**)
 {*/
    using boost::math::constants::pi;
-   typedef boost::multiprecision::cpp_dec_float_50 mp_type;
+   using mp_type = boost::multiprecision::cpp_dec_float_50;
 
    const float j2_f =
       integral(0.0F,

@@ -15,7 +15,7 @@ void t1()
 
    using namespace boost::multiprecision;
 
-   typedef number<debug_adaptor<cpp_dec_float<50> > > fp_type;
+   using fp_type = number<debug_adaptor<cpp_dec_float<50> > >;
 
    fp_type denom = 1;
    fp_type sum = 1;

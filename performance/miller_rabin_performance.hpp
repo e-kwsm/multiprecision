@@ -28,7 +28,7 @@
 template <class Clock>
 struct stopwatch
 {
-   typedef typename Clock::duration duration;
+   using duration = typename Clock::duration;
    stopwatch()
    {
       m_start = Clock::now();

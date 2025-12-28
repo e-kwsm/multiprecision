@@ -15,7 +15,7 @@
 #define DISABLE_TEST
 #endif
 
-typedef boost::multiprecision::cpp_int mp_int;
+using mp_int = boost::multiprecision::cpp_int;
 
 #if !defined(DISABLE_TEST)
 

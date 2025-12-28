@@ -60,10 +60,10 @@ void quickbook_results()
    // Precision
    // Time
    //
-   typedef std::map<std::string, std::map<std::string, std::map<std::string, std::map<int, double> > > >::const_iterator category_iterator;
-   typedef std::map<std::string, std::map<std::string, std::map<int, double> > >::const_iterator                         operator_iterator;
-   typedef std::map<std::string, std::map<int, double> >::const_iterator                                                 type_iterator;
-   typedef std::map<int, double>::const_iterator                                                                         precision_iterator;
+   using category_iterator  = std::map<std::string, std::map<std::string, std::map<std::string, std::map<int, double> > > >::const_iterator;
+   using operator_iterator  = std::map<std::string, std::map<std::string, std::map<int, double> > >::const_iterator;
+   using type_iterator      = std::map<std::string, std::map<int, double> >::const_iterator;
+   using precision_iterator = std::map<int, double>::const_iterator;
 
    for (category_iterator i = result_table.begin(); i != result_table.end(); ++i)
    {

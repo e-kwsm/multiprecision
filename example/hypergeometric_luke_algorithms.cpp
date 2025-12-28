@@ -34,13 +34,13 @@
 
 #if defined(USE_CPP_BIN_FLOAT)
   #include <boost/multiprecision/cpp_bin_float.hpp>
-  typedef boost::multiprecision::number<boost::multiprecision::cpp_bin_float<DIGIT_COUNT + 10> > mp_type;
+using mp_type = boost::multiprecision::number<boost::multiprecision::cpp_bin_float<DIGIT_COUNT + 10> >;
 #elif defined(USE_CPP_DEC_FLOAT)
   #include <boost/multiprecision/cpp_dec_float.hpp>
-  typedef boost::multiprecision::number<boost::multiprecision::cpp_dec_float<DIGIT_COUNT + 10> > mp_type;
+using mp_type = boost::multiprecision::number<boost::multiprecision::cpp_dec_float<DIGIT_COUNT + 10> >;
 #elif defined(USE_MPFR)
   #include <boost/multiprecision/mpfr.hpp>
-  typedef boost::multiprecision::number<boost::multiprecision::mpfr_float_backend<DIGIT_COUNT + 10> > mp_type;
+using mp_type = boost::multiprecision::number<boost::multiprecision::mpfr_float_backend<DIGIT_COUNT + 10> >;
 #else
   #error no multiprecision floating type is defined
 #endif
@@ -49,7 +49,7 @@ template <class clock_type>
 struct stopwatch
 {
 public:
-  typedef typename clock_type::duration duration_type;
+  using duration_type = typename clock_type::duration;
 
   stopwatch() : m_start(clock_type::now()) { }
 

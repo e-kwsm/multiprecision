@@ -51,7 +51,7 @@
 template <class Clock>
 struct stopwatch
 {
-   typedef typename Clock::duration duration;
+   using duration = typename Clock::duration;
    stopwatch()
    {
       m_start = Clock::now();
@@ -515,14 +515,14 @@ struct tester
       int e;
       val = frexp(val, &e);
 
-      typedef typename U::backend_type::exponent_type        e_type;
+      using e_type = typename U::backend_type::exponent_type;
       static boost::random::uniform_int_distribution<e_type> ui(-30, 30);
       return ldexp(val, static_cast<int>(ui(gen)));
    }
    template <class U>
    U generate_random(const std::integral_constant<int, boost::multiprecision::number_kind_integer>&)
    {
-      typedef boost::random::mt19937::result_type random_type;
+      using random_type = boost::random::mt19937::result_type;
 
       U        max_val;
       unsigned digits;
@@ -555,8 +555,8 @@ struct tester
    template <class U>
    U generate_random(const std::integral_constant<int, boost::multiprecision::number_kind_rational>&)
    {
-      typedef boost::random::mt19937::result_type                     random_type;
-      typedef typename boost::multiprecision::component_type<U>::type IntType;
+      using random_type = boost::random::mt19937::result_type;
+      using IntType     = typename boost::multiprecision::component_type<U>::type;
 
       IntType  max_val;
       unsigned digits;

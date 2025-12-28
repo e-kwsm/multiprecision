@@ -16,7 +16,7 @@ int main()
    using namespace boost::random;
    using namespace boost::multiprecision;
 
-   typedef cpp_int int_type;
+   using int_type = cpp_int;
    mt11213b base_gen(clock());
    independent_bits_engine<mt11213b, 256, int_type> gen(base_gen);
    //
