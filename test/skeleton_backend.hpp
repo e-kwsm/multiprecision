@@ -43,14 +43,14 @@ struct skeleton_backend
    // present in the list will get promoted to the next wider type that is
    // in the list whenever mixed arithmetic involving that type is encountered.
    //
-   typedef std::tuple</*signed char, short, int, long,*/ long long>                                     signed_types;
-   typedef std::tuple</* unsigned char, unsigned short, unsigned, unsigned long,*/ unsigned long long>  unsigned_types;
-   typedef std::tuple</*float, double,*/ long double>                                                   float_types;
+   using signed_types   = std::tuple</*signed char, short, int, long,*/ long long>;
+   using unsigned_types = std::tuple</* unsigned char, unsigned short, unsigned, unsigned long,*/ unsigned long long>;
+   using float_types    = std::tuple</*float, double,*/ long double>;
    //
    // This typedef is only required if this is a floating point type, it is the type
    // which holds the exponent:
    //
-   typedef int                                                         exponent_type;
+   using exponent_type = int;
 
    // We must have a default constructor:
    skeleton_backend();
@@ -1077,7 +1077,7 @@ using boost::multiprecision::backends::skeleton_backend;
 //
 // Typedef whatever number's make use of this backend:
 //
-typedef number<skeleton_backend, et_off> skeleton_number;
+using skeleton_number = number<skeleton_backend, et_off>;
 //
 // Define a category for this number type, one of:
 // 
@@ -1214,7 +1214,7 @@ namespace std {
 template <boost::multiprecision::expression_template_option ExpressionTemplates>
 class numeric_limits<boost::multiprecision::number<boost::multiprecision::skeleton_backend, ExpressionTemplates> >
 {
-   typedef boost::multiprecision::number<boost::multiprecision::skeleton_backend, ExpressionTemplates> number_type;
+   using number_type = boost::multiprecision::number<boost::multiprecision::skeleton_backend, ExpressionTemplates>;
 
  public:
    static constexpr bool is_specialized = true;
