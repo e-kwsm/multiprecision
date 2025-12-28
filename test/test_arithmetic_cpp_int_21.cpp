@@ -14,7 +14,7 @@ struct is_twos_complement_integer<boost::multiprecision::number<boost::multiprec
 template <>
 struct related_type<boost::multiprecision::number<boost::multiprecision::rational_adaptor<boost::multiprecision::uint128_t::backend_type> > >
 {
-   typedef boost::multiprecision::uint128_t type;
+   using type = boost::multiprecision::uint128_t;
 };
 
 

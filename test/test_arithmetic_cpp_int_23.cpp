@@ -10,7 +10,7 @@
 template <>
 struct related_type<boost::multiprecision::number<boost::multiprecision::rational_adaptor<boost::multiprecision::checked_int256_t::backend_type> > >
 {
-   typedef boost::multiprecision::checked_int256_t type;
+   using type = boost::multiprecision::checked_int256_t;
 };
 
 template <>
