@@ -28,10 +28,10 @@ namespace backends {
 template <class Arithmetic>
 struct arithmetic_backend
 {
-   typedef std::tuple<short, int, long, long long>                                 signed_types;
-   typedef std::tuple<unsigned short, unsigned, unsigned long, unsigned long long> unsigned_types;
-   typedef std::tuple<float, double, long double>                                  float_types;
-   typedef int                                                                    exponent_type;
+   using signed_types   = std::tuple<short, int, long, long long>;
+   using unsigned_types = std::tuple<unsigned short, unsigned, unsigned long, unsigned long long>;
+   using float_types    = std::tuple<float, double, long double>;
+   using exponent_type  = int;
 
    BOOST_MP_CXX14_CONSTEXPR arithmetic_backend() : m_value(0) {}
    BOOST_MP_CXX14_CONSTEXPR arithmetic_backend(const arithmetic_backend& o) : m_value(o.m_value) {}
@@ -571,12 +571,12 @@ struct double_precision_type;
 template <class Arithmetic, boost::multiprecision::expression_template_option ET>
 struct double_precision_type<number<arithmetic_backend<Arithmetic>, ET> >
 {
-   typedef number<arithmetic_backend<typename double_precision_type<Arithmetic>::type>, ET> type;
+   using type = number<arithmetic_backend<typename double_precision_type<Arithmetic>::type>, ET>;
 };
 template <>
 struct double_precision_type<arithmetic_backend<std::int32_t> >
 {
-   typedef arithmetic_backend<std::int64_t> type;
+   using type = arithmetic_backend<std::int64_t>;
 };
 
 } // namespace detail
@@ -636,8 +636,8 @@ namespace std {
 template <class Arithmetic, boost::multiprecision::expression_template_option ExpressionTemplates>
 class numeric_limits<boost::multiprecision::number<boost::multiprecision::arithmetic_backend<Arithmetic>, ExpressionTemplates> > : public std::numeric_limits<Arithmetic>
 {
-   typedef std::numeric_limits<Arithmetic>                                                                           base_type;
-   typedef boost::multiprecision::number<boost::multiprecision::arithmetic_backend<Arithmetic>, ExpressionTemplates> number_type;
+   using base_type   = std::numeric_limits<Arithmetic>;
+   using number_type = boost::multiprecision::number<boost::multiprecision::arithmetic_backend<Arithmetic>, ExpressionTemplates>;
 
  public:
    static constexpr number_type(min)() noexcept { return (base_type::min)(); }
@@ -654,8 +654,8 @@ class numeric_limits<boost::multiprecision::number<boost::multiprecision::arithm
 template <>
 class numeric_limits<boost::math::concepts::real_concept> : public std::numeric_limits<long double>
 {
-   typedef std::numeric_limits<long double>    base_type;
-   typedef boost::math::concepts::real_concept number_type;
+   using base_type   = std::numeric_limits<long double>;
+   using number_type = boost::math::concepts::real_concept;
 
  public:
    static const number_type(min)() noexcept { return (base_type::min)(); }
