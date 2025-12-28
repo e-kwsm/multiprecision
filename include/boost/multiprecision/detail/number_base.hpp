@@ -442,7 +442,7 @@ struct unmentionable
    unmentionable* proc() { return nullptr; }
 };
 
-typedef unmentionable* (unmentionable::*unmentionable_type)();
+using unmentionable_type = unmentionable* (unmentionable::*)();
 
 template <class T, bool b>
 struct expression_storage_base

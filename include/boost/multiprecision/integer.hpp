@@ -204,10 +204,10 @@ BOOST_MP_CXX14_CONSTEXPR Integer karatsuba_sqrt(const Integer& x, Integer& r, si
    // as __float128 from libquadmath).  So only use long double if it's an 80-bit type:
    //
 #ifndef __clang__
-   typedef typename std::conditional<(std::numeric_limits<long double>::digits == 64), long double, double>::type real_cast_type;
+   using real_cast_type = typename std::conditional<(std::numeric_limits<long double>::digits == 64), long double, double>::type;
 #else
    // clang has buggy __int128 -> long double conversion:
-   typedef double real_cast_type;
+   using real_cast_type = double;
 #endif
    //
    // As per the Karatsuba sqrt algorithm, the low order bits/4 bits pay no part in the result, only in the remainder,

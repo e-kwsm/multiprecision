@@ -98,7 +98,7 @@ template <class T, class U>
 typename std::conditional<std::is_convertible<T, U>::value, U, T>::type
 relative_error(T a, U b)
 {
-   typedef typename std::conditional<std::is_convertible<T, U>::value, U, T>::type cast_type;
+   using cast_type = typename std::conditional<std::is_convertible<T, U>::value, U, T>::type;
    return relative_error<cast_type>(static_cast<cast_type>(a), static_cast<cast_type>(b));
 }
 

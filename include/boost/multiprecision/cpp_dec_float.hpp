@@ -126,12 +126,11 @@ class cpp_dec_float // LCOV_EXCL_LINE This causes a false negative on lcov cover
                                 detail::static_array <std::uint32_t, static_cast<std::uint32_t>(cpp_dec_float_elem_number)>,
                                 detail::dynamic_array<std::uint32_t, static_cast<std::uint32_t>(cpp_dec_float_elem_number), Allocator> >::type;
 
-   typedef enum enum_fpclass_type
-   {
+   using fpclass_type = enum enum_fpclass_type {
       cpp_dec_float_finite,
       cpp_dec_float_inf,
       cpp_dec_float_NaN
-   } fpclass_type;
+   };
 
    array_type    data      { };
    exponent_type exp       { };

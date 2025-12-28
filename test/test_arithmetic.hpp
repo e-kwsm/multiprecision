@@ -103,7 +103,7 @@ template <class tag, class Arg1, class Arg2, class Arg3, class Arg4>
 typename boost::multiprecision::detail::expression<tag, Arg1, Arg2, Arg3, Arg4>::result_type
 abs(boost::multiprecision::detail::expression<tag, Arg1, Arg2, Arg3, Arg4> const& v)
 {
-   typedef typename boost::multiprecision::detail::expression<tag, Arg1, Arg2, Arg3, Arg4>::result_type result_type;
+   using result_type = typename boost::multiprecision::detail::expression<tag, Arg1, Arg2, Arg3, Arg4>::result_type;
    return v < 0 ? result_type(-v) : result_type(v);
 }
 
@@ -116,7 +116,7 @@ struct is_twos_complement_integer : public std::integral_constant<bool, true>
 template <class T>
 struct related_type
 {
-   typedef T type;
+   using type = T;
 };
 
 template <class Real, class Val>
@@ -374,7 +374,7 @@ void test_rational_signed(const std::integral_constant<bool, false>&)
 template <class Real>
 void test_rational(const std::integral_constant<bool, false>&)
 {
-   typedef typename Real::value_type value_type;
+   using value_type = typename Real::value_type;
    Real a(2);
    a /= 3;
    BOOST_CHECK_EQUAL(numerator(a), 2);
@@ -1446,7 +1446,7 @@ void test_float_ops(const std::integral_constant<int, boost::multiprecision::num
    //
    // ldexp and frexp, these pretty much have to be implemented by each backend:
    //
-   typedef typename Real::backend_type::exponent_type e_type;
+   using e_type = typename Real::backend_type::exponent_type;
    BOOST_CHECK_EQUAL(ldexp(Real(2), 5), 64);
    BOOST_CHECK_EQUAL(ldexp(Real(2), -5), Real(2) / 32);
    Real   v(512);
@@ -1763,13 +1763,13 @@ void test_float_ops(const std::integral_constant<int, boost::multiprecision::num
 template <class T>
 struct lexical_cast_target_type
 {
-   typedef typename std::conditional<
+   using type = typename std::conditional<
        boost::multiprecision::detail::is_signed<T>::value && boost::multiprecision::detail::is_integral<T>::value,
        std::intmax_t,
        typename std::conditional<
            boost::multiprecision::detail::is_unsigned<T>::value,
            std::uintmax_t,
-           T>::type>::type type;
+           T>::type>::type;
 };
 
 template <class Real, class Num>
@@ -1808,7 +1808,7 @@ template <class Real, class Num>
 void test_negative_mixed_numeric_limits(std::integral_constant<bool, true> const&)
 {
    #ifndef BOOST_MP_STANDALONE
-   typedef typename lexical_cast_target_type<Num>::type target_type;
+   using target_type = typename lexical_cast_target_type<Num>::type;
 #if defined(TEST_MPFR)
    Num tol = 10 * std::numeric_limits<Num>::epsilon();
 #else
@@ -1839,14 +1839,14 @@ void test_negative_mixed_numeric_limits(std::integral_constant<bool, false> cons
 template <class Real, class Num>
 void test_negative_mixed(std::integral_constant<bool, true> const&)
 {
-   typedef typename std::conditional<
+   using cast_type = typename std::conditional<
        std::is_convertible<Num, Real>::value,
        typename std::conditional<boost::multiprecision::detail::is_integral<Num>::value && (sizeof(Num) < sizeof(int)), int, Num>::type,
-       Real>::type cast_type;
-   typedef typename std::conditional<
+       Real>::type;
+   using simple_cast_type = typename std::conditional<
        std::is_convertible<Num, Real>::value,
        Num,
-       Real>::type simple_cast_type;
+       Real>::type;
    std::cout << "Testing mixed arithmetic with type: " << name_of<Real>() << " and " << name_of<Num>() << std::endl;
    static const int left_shift = std::numeric_limits<Num>::digits - 1;
    Num              n1         = -static_cast<Num>(1uLL << ((left_shift < 63) && (left_shift > 0) ? left_shift : 10));
@@ -2168,7 +2168,7 @@ template <class Real, class Num>
 void test_mixed_numeric_limits(const std::integral_constant<bool, true>&)
 {
    #ifndef BOOST_MP_STANDALONE
-   typedef typename lexical_cast_target_type<Num>::type target_type;
+   using target_type = typename lexical_cast_target_type<Num>::type;
 #if defined(TEST_MPFR)
    Num tol = 10 * std::numeric_limits<Num>::epsilon();
 #else
@@ -2270,14 +2270,14 @@ void test_mixed_rational(const std::false_type&)
 template <class Real, class Num>
 void test_mixed(const std::integral_constant<bool, true>&)
 {
-   typedef typename std::conditional<
+   using cast_type = typename std::conditional<
        std::is_convertible<Num, Real>::value,
        typename std::conditional<boost::multiprecision::detail::is_integral<Num>::value && (sizeof(Num) < sizeof(int)), int, Num>::type,
-       Real>::type cast_type;
-   typedef typename std::conditional<
+       Real>::type;
+   using simple_cast_type = typename std::conditional<
        std::is_convertible<Num, Real>::value,
        Num,
-       Real>::type simple_cast_type;
+       Real>::type;
 
    BOOST_IF_CONSTEXPR (std::numeric_limits<Real>::is_specialized && std::numeric_limits<Real>::is_bounded && std::numeric_limits<Real>::digits < std::numeric_limits<Num>::digits)
       return;
@@ -2370,11 +2370,8 @@ void test_mixed(const std::integral_constant<bool, true>&)
    r = static_cast<cast_type>(Num(4) * n4) / Real(4);
    BOOST_CHECK_EQUAL(r, static_cast<cast_type>(n4));
 
-   typedef std::integral_constant<bool,
-       (!std::numeric_limits<Num>::is_specialized || std::numeric_limits<Num>::is_signed)
-      && (!std::numeric_limits<Real>::is_specialized || std::numeric_limits<Real>::is_signed)
-      && !is_definitely_unsigned_int<Num>::value>
-       signed_tag;
+   using signed_tag = std::integral_constant<bool,
+                                             (!std::numeric_limits<Num>::is_specialized || std::numeric_limits<Num>::is_signed) && (!std::numeric_limits<Real>::is_specialized || std::numeric_limits<Real>::is_signed) && !is_definitely_unsigned_int<Num>::value>;
 
    test_negative_mixed<Real, Num>(signed_tag());
 
@@ -2617,7 +2614,7 @@ typename std::enable_if<boost::multiprecision::number_category<Real>::value == b
    BOOST_CHECK_EQUAL(real(a), 2);
    BOOST_CHECK_EQUAL(imag(a), 3);
 
-   typedef typename boost::multiprecision::component_type<Real>::type real_type;
+   using real_type = typename boost::multiprecision::component_type<Real>::type;
 
    real_type r(3);
    real_type tol = std::numeric_limits<real_type>::epsilon() * 30;
@@ -3274,7 +3271,7 @@ void test()
    test_mixed_float128<Real>();
 #endif
 
-   typedef typename related_type<Real>::type                                                                      related_type;
+   using related_type = typename related_type<Real>::type;
    std::integral_constant<bool, boost::multiprecision::is_number<Real>::value && !std::is_same<related_type, Real>::value> tag2;
 
    test_mixed<Real, related_type>(tag2);

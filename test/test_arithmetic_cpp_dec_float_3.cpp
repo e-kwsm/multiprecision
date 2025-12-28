@@ -12,7 +12,7 @@
 template <unsigned D>
 struct related_type<boost::multiprecision::number<boost::multiprecision::cpp_dec_float<D> > >
 {
-   typedef boost::multiprecision::number<boost::multiprecision::cpp_dec_float<D / 2> > type;
+   using type = boost::multiprecision::number<boost::multiprecision::cpp_dec_float<D / 2> >;
 };
 
 int main()

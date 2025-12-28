@@ -26,11 +26,11 @@ struct rational_adaptor
    // present in the list will get promoted to the next wider type that is
    // in the list whenever mixed arithmetic involving that type is encountered.
    //
-   typedef typename Backend::signed_types    signed_types;
-   typedef typename Backend::unsigned_types  unsigned_types;
-   typedef typename Backend::float_types     float_types;
+   using signed_types   = typename Backend::signed_types;
+   using unsigned_types = typename Backend::unsigned_types;
+   using float_types    = typename Backend::float_types;
 
-   typedef typename std::tuple_element<0, unsigned_types>::type ui_type;
+   using ui_type = typename std::tuple_element<0, unsigned_types>::type;
 
    static Backend get_one()
    {
@@ -1236,7 +1236,7 @@ struct number_category<rational_adaptor<Backend> > : public std::integral_consta
 template <class Backend, expression_template_option ExpressionTemplates>
 struct component_type<number<rational_adaptor<Backend>, ExpressionTemplates> >
 {
-   typedef number<Backend, ExpressionTemplates> type;
+   using type = number<Backend, ExpressionTemplates>;
 };
 
 template <class IntBackend, expression_template_option ET>
