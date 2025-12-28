@@ -7,7 +7,7 @@
 
 int main()
 {
-   typedef boost::multiprecision::number<boost::multiprecision::cpp_bin_float<8, boost::multiprecision::backends::digit_base_2> > quarter_float;
+   using quarter_float = boost::multiprecision::number<boost::multiprecision::cpp_bin_float<8, boost::multiprecision::backends::digit_base_2> >;
 
    quarter_float qf(256);
 

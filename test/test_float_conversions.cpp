@@ -26,7 +26,7 @@ int main()
    cpp_bin_float_single s = boost::math::constants::pi<cpp_bin_float_single>();
    std::cout << s << std::endl;
 
-   typedef number<backends::cpp_bin_float<11, backends::digit_base_2, void, boost::int8_t, -14, 15>, et_off> cpp_bin_float_half;
+   using cpp_bin_float_half = number<backends::cpp_bin_float<11, backends::digit_base_2, void, boost::int8_t, -14, 15>, et_off>;
 
    static_assert(!(std::is_convertible<float, cpp_bin_float_half>::value), "Error check");
    static_assert(!(std::is_convertible<double, cpp_bin_float_half>::value), "Error check");

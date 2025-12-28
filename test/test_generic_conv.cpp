@@ -60,7 +60,7 @@ int main()
       //
       // Now integer to float:
       //
-      typedef number<cpp_dec_float<500> > dec_float_500;
+      using dec_float_500 = number<cpp_dec_float<500> >;
       dec_float_500                       df(c);
       dec_float_500                       df2(c.str());
       BOOST_CHECK_EQUAL(df, df2);

@@ -18,7 +18,7 @@ template <class Number, class BigNumber>
 void test()
 {
    using namespace boost::multiprecision;
-   typedef Number test_type;
+   using test_type = Number;
 
    test_type h = (std::numeric_limits<test_type>::max)();
    test_type l = (std::numeric_limits<test_type>::max)();

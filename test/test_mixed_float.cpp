@@ -24,7 +24,7 @@ template <class Number, class BigNumber>
 void test()
 {
    using namespace boost::multiprecision;
-   typedef Number test_type;
+   using test_type = Number;
 
    test_type a = 1;
    a /= 3;

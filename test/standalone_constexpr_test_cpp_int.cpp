@@ -20,8 +20,8 @@ decltype(std::declval<F>()(std::declval<V>())) non_constexpr_invoke(F f, V v)
 
 int main()
 {
-   typedef boost::multiprecision::int256_t  int_backend;
-   typedef boost::multiprecision::uint256_t unsigned_backend;
+   using int_backend      = boost::multiprecision::int256_t;
+   using unsigned_backend = boost::multiprecision::uint256_t;
 
    {
       constexpr int_backend a(22);

@@ -32,7 +32,7 @@
 template <class Clock>
 struct stopwatch
 {
-   typedef typename Clock::duration duration;
+   using duration = typename Clock::duration;
    stopwatch()
    {
       m_start = Clock::now();
@@ -53,19 +53,19 @@ struct stopwatch
 template <class T>
 struct exponent_type
 {
-   typedef int type;
+   using type = int;
 };
 template <class T, boost::multiprecision::expression_template_option ET>
 struct exponent_type<boost::multiprecision::number<T, ET> >
 {
-   typedef typename T::exponent_type type;
+   using type = typename T::exponent_type;
 };
 
 template <class T>
 T generate_random_float()
 {
    BOOST_MATH_STD_USING
-   typedef typename exponent_type<T>::type e_type;
+   using e_type = typename exponent_type<T>::type;
    static boost::random::mt19937           gen;
    T                                       val      = gen();
    T                                       prev_val = -1;
@@ -100,7 +100,7 @@ void do_round_trip(const Float& val)
    e -= std::numeric_limits<Float>::digits + 2;
    BOOST_MP_ASSERT(val == (val + ldexp(Float(1), e)));
    Rat                                                               delta, rounded;
-   typedef typename boost::multiprecision::component_type<Rat>::type i_type;
+   using i_type = typename boost::multiprecision::component_type<Rat>::type;
    i_type                                                            i(1);
    i <<= (e < 0 ? -e : e);
    if (e > 0)
@@ -190,7 +190,7 @@ void test_random_rationals()
    std::cout << "digits10 = " << std::numeric_limits<Float>::digits10 << std::endl;
    std::cout << "max_digits10 = " << std::numeric_limits<Float>::max_digits10 << std::endl;
 
-   typedef typename boost::multiprecision::component_type<Rat>::type i_type;
+   using i_type = typename boost::multiprecision::component_type<Rat>::type;
    stopwatch<boost::chrono::high_resolution_clock>                   w;
 
    int count = 0;

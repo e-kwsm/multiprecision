@@ -221,7 +221,7 @@ int main()
    //
    test<number<cpp_int_backend<sizeof(limb_type) * CHAR_BIT * 2> >, cpp_int>();
 
-   typedef boost::multiprecision::number<boost::multiprecision::cpp_int_backend<512> > To;
+   using To = boost::multiprecision::number<boost::multiprecision::cpp_int_backend<512> >;
    test_operations<cpp_int, To>();
 
    return boost::report_errors();

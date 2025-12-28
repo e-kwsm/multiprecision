@@ -99,9 +99,9 @@ int main()
 {
    using namespace boost::multiprecision::literals;
 
-   typedef boost::multiprecision::checked_int1024_t  int_backend;
-   typedef boost::multiprecision::checked_int512_t   small_int_backend;
-   typedef boost::multiprecision::checked_uint1024_t unsigned_backend;
+   using int_backend       = boost::multiprecision::checked_int1024_t;
+   using small_int_backend = boost::multiprecision::checked_int512_t;
+   using unsigned_backend  = boost::multiprecision::checked_uint1024_t;
 
    constexpr int_backend f1 = factorial(int_backend(31));
    static_assert(f1 == 0x1956ad0aae33a4560c5cd2c000000_cppi);
