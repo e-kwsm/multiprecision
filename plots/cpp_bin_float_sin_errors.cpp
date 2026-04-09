@@ -17,10 +17,9 @@ int main() {
    using PreciseReal = boost::multiprecision::mpfr_float_100;
    using CoarseReal = boost::multiprecision::cpp_bin_float_50;
 
-   typedef boost::math::policies::policy<
+   using no_promote_policy = boost::math::policies::policy<
       boost::math::policies::promote_float<false>,
-      boost::math::policies::promote_double<false> >
-      no_promote_policy;
+      boost::math::policies::promote_double<false> >;
 
    auto ai_coarse = [](CoarseReal const& x)->CoarseReal {
       return sin(x);
